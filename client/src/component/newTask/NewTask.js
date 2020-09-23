@@ -11,7 +11,6 @@ const NewTask = () => {
     axios
       .post(`http://localhost:8080/ajouter?newTask=${newTask}`)
       .then((reponse) => {
-        console.log(reponse.data);
         setTasks(reponse.data);
       })
       .catch((error) => {
