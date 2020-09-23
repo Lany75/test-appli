@@ -2,7 +2,7 @@ const Todo = require("../models/todoModel");
 const { v4: uuidv4 } = require("uuid");
 
 module.exports = {
-  afficherLesTaches: async () => {
+  recupererLesTaches: async () => {
     const todos = await Todo.findAll({
       order: [["name", "ASC"]],
       attributes: ["id", "name", "createdAt", "updatedAt"],
