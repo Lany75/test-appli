@@ -1,0 +1,13 @@
+.task-component {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+/*.btn-supp-task {
+  margin: 10px;
+  display: flex;
+  font-size: 20px;
+}*/
