@@ -1,10 +1,12 @@
 import Axios from "axios";
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-export const TaskContext = createContext();
+export const useTaskContext = () => useContext(TaskContext);
+const defaultValues = [{ name: "valeur par défaut" }];
+export const TaskContext = createContext(defaultValues);
 
 function TaskProvider({ children }) {
-  const [tasks, setTasks] = useState();
+  const [tasks, setTasks] = useState([]);
 
   const getTaskList = () => {
     Axios.get(`http://localhost:8080/`)

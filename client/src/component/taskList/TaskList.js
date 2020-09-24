@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { TaskContext } from "../../context/taskContext";
 import TaskComponent from "../taskComponent/TaskComponent";
 
-const TaskList = () => {
-  const { tasks } = useContext(TaskContext);
+const TaskList = ({ tasks }) => {
+  //const { tasks } = useContext(TaskContext);
+  //const tasks = props.tasks;
 
   return (
     <>
@@ -11,7 +12,13 @@ const TaskList = () => {
       <ul>
         {tasks &&
           tasks.map((t, index) => {
-            return <TaskComponent key={index} name={t.name} />;
+            return (
+              <TaskComponent
+                className="task-component"
+                key={index}
+                name={t.name}
+              />
+            );
           })}
       </ul>
     </>

@@ -1,24 +1,29 @@
 import { expect } from "chai";
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import React from "react";
 
+import App from "../App";
+import TaskComponent from "../component/taskComponent/TaskComponent";
 import TaskList from "../component/taskList/TaskList";
+import * as TaskContext from "../context/taskContext";
 
 describe("<TaskList />", () => {
+  const tachesTest = [{ name: "tache 1" }, { name: "tache 2" }];
+  const taskList = shallow(<TaskList tasks={tachesTest} />);
+
   it("contains a h2 tag", () => {
-    const taskList = shallow(<TaskList />);
     const h2Tag = taskList.find("h2");
+    expect(h2Tag).to.have.length(1);
     expect(h2Tag.text()).to.be.equal("Liste des taches");
   });
 
   it("contains a ul tag", () => {
-    const taskList = shallow(<TaskList />);
     const ulTag = taskList.find("ul");
+    expect(ulTag).to.have.length(1);
   });
 
-  it("contains 3 li tag", () => {
-    const taskList = shallow(<TaskList />);
-    const liTag = taskList.find("li");
-    expect(liTag).to.have.lengthOf(3);
+  it("contains 2 TaskComponent", () => {
+    const taskComponent = taskList.find(".task-component");
+    expect(taskComponent).to.have.length(2);
   });
 });

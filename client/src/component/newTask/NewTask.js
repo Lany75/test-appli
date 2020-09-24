@@ -30,7 +30,12 @@ const NewTask = () => {
             setNewTask(e.target.value);
           }}
         />
-        <Button variant="contained" disableElevation onClick={addTask}>
+        <Button
+          id="btn-add-task"
+          variant="contained"
+          disableElevation
+          onClick={addTask}
+        >
           Ajouter
         </Button>
       </div>
