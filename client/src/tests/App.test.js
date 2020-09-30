@@ -1,8 +1,10 @@
 import { expect } from "chai";
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import React from "react";
 
 import App from "../App";
+import NewTask from "../component/newTask/NewTask";
+import TaskList from "../component/taskList/TaskList";
 
 describe("<App />", () => {
   const application = shallow(<App />);
@@ -18,10 +20,10 @@ describe("<App />", () => {
   });
 
   it("contains a list of tasks", () => {
-    expect(application.find("#task-list")).to.have.length(1);
+    expect(application.find(TaskList)).to.have.length(1);
   });
 
   it("contains a add task container", () => {
-    expect(application.find("#new-task")).to.have.length(1);
+    expect(application.find(NewTask)).to.have.length(1);
   });
 });
