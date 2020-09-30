@@ -16,4 +16,10 @@ module.exports = {
       name: nameTask,
     });
   },
+
+  supprimerUneTache: async (taskId) => {
+    await Todo.destroy({
+      where: { id: taskId },
+    });
+  },
 };

@@ -1,26 +1,33 @@
 import React, { useContext } from "react";
-import { TaskContext } from "../../context/taskContext";
+import { TaskContext, useTaskContext } from "../../context/taskContext";
 import TaskComponent from "../taskComponent/TaskComponent";
 
-const TaskList = ({ tasks }) => {
+import "./TaskList.css";
+
+const TaskList = () => {
+  const { tasks } = useTaskContext();
   //const { tasks } = useContext(TaskContext);
-  //const tasks = props.tasks;
 
   return (
     <>
       <h2>Liste des taches</h2>
-      <ul>
-        {tasks &&
-          tasks.map((t, index) => {
-            return (
-              <TaskComponent
-                className="task-component"
-                key={index}
-                name={t.name}
-              />
-            );
-          })}
-      </ul>
+      {tasks &&
+        (tasks.length > 0 ? (
+          <ul id="task-list">
+            {tasks &&
+              tasks.map((t) => {
+                return (
+                  <TaskComponent
+                    className="task-component"
+                    key={t.id}
+                    task={t}
+                  />
+                );
+              })}
+          </ul>
+        ) : (
+          <div id="task-list">Pas encore de tache</div>
+        ))}
     </>
   );
 };

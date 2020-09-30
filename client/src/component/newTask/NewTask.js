@@ -1,21 +1,23 @@
 import React, { useContext, useState } from "react";
 import { Button, TextField } from "@material-ui/core";
-import axios from "axios";
-import { TaskContext } from "../../context/taskContext";
+import { TaskContext, useTaskContext } from "../../context/taskContext";
+import Axios from "axios";
 
 const NewTask = () => {
   const [newTask, setNewTask] = useState();
-  const { setTasks } = useContext(TaskContext);
+  const { tasks, setTasks } = useTaskContext();
+  //const { tasks, setTasks } = useContext(TaskContext);
 
   const addTask = () => {
-    axios
-      .post(`http://localhost:8080/ajouter?newTask=${newTask}`)
-      .then((reponse) => {
-        setTasks(reponse.data);
-      })
-      .catch((error) => {
-        console.log("vous avez une erreur : ", error);
-      });
+    if (tasks.length < 42) {
+      Axios.post(`http://localhost:8080/ajouter?newTask=${newTask}`)
+        .then((reponse) => {
+          setTasks(reponse.data);
+        })
+        .catch((error) => {
+          console.log("vous avez une erreur : ", error);
+        });
+    } else alert("nombre maximum de taches atteinte");
   };
 
   return (
