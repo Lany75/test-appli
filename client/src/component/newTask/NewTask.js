@@ -10,7 +10,8 @@ const NewTask = () => {
 
   const addTask = () => {
     if (tasks.length < 42) {
-      Axios.post(`http://localhost:8080/ajouter?newTask=${newTask}`)
+      //Axios.post(`http://localhost:8080/ajouter?newTask=${newTask}`)
+      Axios.post(`http://localhost:8080/${newTask}`)
         .then((reponse) => {
           setTasks(reponse.data);
         })
