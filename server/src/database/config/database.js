@@ -1,7 +1,14 @@
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
-const database = new Sequelize(process.env.DATABASE_URL);
+let database;
+if (process.env.NODE_ENV === "test") {
+  console.log("on utilise DATABASE_URL_TEST");
+  database = new Sequelize(process.env.DATABASE_URL_TEST);
+} else {
+  console.log("on utilise DATABASE_URL");
+  database = new Sequelize(process.env.DATABASE_URL);
+}
 
 async function testDB() {
   try {

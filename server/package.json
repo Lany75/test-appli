@@ -8,7 +8,9 @@
     "start:dev": "nodemon src/server.js",
     "migrate-DB": "npx sequelize-cli db:migrate --config src/database/config/config.json --env development",
     "migrate-DB:undo": "npx sequelize-cli db:migrate:undo --config src/database/config/config.json --env development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migrate-DB-test": "npx sequelize-cli db:migrate --config src/database/config/config.json --env test",
+    "migrate-DB-test:undo": "npx sequelize-cli db:migrate:undo --config src/database/config/config.json --env test",
+    "test": "mocha tests/*.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +25,9 @@
     "uuid": "^8.3.0"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.1.3",
     "nodemon": "^2.0.4"
   }
 }
